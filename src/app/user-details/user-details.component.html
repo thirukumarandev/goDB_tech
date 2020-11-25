@@ -1,0 +1,28 @@
+<div class="container">
+  <h2 class="text-center text-white mt-5 mb-5">User Details Sample API</h2>
+  <button class="btn btn-primary m-2" (click)="getUserList()">
+    User Details
+  </button>
+  <div class="table-responsive">
+    <table class="table table-bordered text-white">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Mobile</th>
+          <th scope="col">Website</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of userList; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.website }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

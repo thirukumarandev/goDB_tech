@@ -1,0 +1,175 @@
+<div class="container">
+  <h2 class="text-center text-white mt-4 mb-4">GoDB Tech</h2>
+
+  <div class="d-flex align-items-center justify-content-center">
+    <div class="card" style="width: 50rem">
+      <form [formGroup]="registerForm" class="m-4" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="firstName">Firstname</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="frstNm"
+              id="firstName"
+            />
+            <div *ngIf="submitted && getSignUpForm.frstNm.errors">
+              <span *ngIf="getSignUpForm.frstNm.errors.required"
+                >First Name is required</span
+              >
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="lastName">lastname</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="lstNm"
+              id="lastName"
+            />
+            <div *ngIf="submitted && getSignUpForm.lstNm.errors">
+              <span *ngIf="getSignUpForm.lstNm.errors.required"
+                >Last Name is required</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              class="form-control"
+              formControlName="emailID"
+              id="email"
+            />
+            <div *ngIf="submitted && getSignUpForm.emailID.errors">
+              <span *ngIf="getSignUpForm.emailID.errors.required"
+                >email ID is required</span
+              >
+              <span *ngIf="getSignUpForm.emailID.errors.pattern"
+                >Please enter valid email ID</span
+              >
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="mobile">Mobile</label>
+            <input
+              type="number"
+              class="form-control"
+              formControlName="mobileNo"
+              id="mobile"
+            />
+            <div *ngIf="submitted && getSignUpForm.mobileNo.errors">
+              <span *ngIf="getSignUpForm.mobileNo.errors.required"
+                >Mobile Number is required</span
+              >
+              <span *ngIf="getSignUpForm.mobileNo.errors.minlength"
+                >Mobile Number has less than 10 digits</span
+              >
+              <span *ngIf="getSignUpForm.mobileNo.errors.maxlength"
+                >Mobile Number has more than 10 digits</span
+              >
+              <span *ngIf="getSignUpForm.mobileNo.errors.pattern"
+                >Please enter valid mobile number</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="gender" class="col-md-2">Gender :</label>
+          <div class="col-md-4">
+            <input
+              id="male"
+              type="radio"
+              value="male"
+              name="gender"
+              formControlName="gender"
+            />
+            <label for="male" class="mx-1"> Male </label>
+          </div>
+
+          <div class="col-md-4">
+            <input
+              id="female"
+              type="radio"
+              value="female"
+              name="gender"
+              formControlName="gender"
+            />
+            <label for="female" class="mx-1"> Female </label>
+          </div>
+
+          <div
+            *ngIf="getSignUpForm.gender.touched && getSignUpForm.gender.invalid"
+            class="alert alert-danger"
+          >
+            <div *ngIf="getSignUpForm.gender.errors.required">
+              Gender is required.
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="address">Address</label>
+          <textarea
+            class="form-control"
+            id="address"
+            placeholder="Address"
+            formControlName="address"
+            required
+          ></textarea>
+          <div *ngIf="submitted && getSignUpForm.address.errors">
+            <span *ngIf="getSignUpForm.address.errors.required"
+              >Address is required</span
+            >
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              formControlName="psWrd"
+              id="password"
+              aria-describedby="hint"
+            />
+            <small id="hint" class="text-muted">Min 8 characters</small>
+            <div *ngIf="submitted && getSignUpForm.psWrd.errors">
+              <span *ngIf="getSignUpForm.psWrd.errors.required"
+                >Password is Required</span
+              >
+              <span *ngIf="getSignUpForm.psWrd.errors.minlength"
+                >Password must be at least 8 characters</span
+              >
+            </div>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="conpassword">Conform Password</label>
+            <input
+              type="password"
+              class="form-control"
+              formControlName="conPassword"
+              id="conpassword"
+            />
+            <div *ngIf="submitted && registerForm.errors?.notSame">
+              <span *ngIf="registerForm.errors.notSame"
+                >Password and Confirm password does not match</span
+              >
+            </div>
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-info btn-block"
+          [disabled]="!registerForm.valid"
+        >
+          Sign in
+        </button>
+        <button class="btn btn-warning btn-block" routerLink="/login">
+          Back
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

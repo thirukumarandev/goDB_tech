@@ -1,0 +1,48 @@
+<div id="login">
+  <div class="text-center mt-4 mb-4">
+    <h2 class="text-light headernav">GoDB Tech</h2>
+  </div>
+  <div class="d-flex align-items-center justify-content-center">
+    <div class="card" style="width: 35rem">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="m-4">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            formControlName="usrNm"
+          />
+          <div *ngIf="submitted && f.usrNm.errors">
+            <span *ngIf="f.usrNm.errors.required">Email is required</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            formControlName="pasWd"
+          />
+          <div *ngIf="submitted && f.pasWd.errors">
+            <span *ngIf="f.pasWd.errors.required">Password is required</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button
+            [disabled]="!loginForm.valid"
+            class="btn btn-primary btn-block"
+          >
+            Login
+          </button>
+          <button class="btn btn-warning btn-block" routerLink="/register">
+            Register
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
